@@ -1,0 +1,61 @@
+#main {
+  width: 400px;
+  height: 525px;
+  background-image: url(WhatsApp\ Image\ 2023-10-06\ at\ 12.13.38.jpeg);
+  margin: 0 auto;
+}
+#space {
+  width: 500px;
+  height: 525px;
+  position: absolute;
+  overflow: hidden;
+  z-index: 100;
+}
+@keyframes animasiroket {
+  from {
+    background-image: url(IMG_20231005_212200_adobe_express.png);
+    background-size: 100%;
+  }
+  to {
+    background-image: url(IMG_20231005_222813_adobe_express.png);
+    background-size: 100%;
+  }
+}
+#rocket {
+  width: 100px;
+  height: 100px;
+  background-image: url(IMG_20231005_212200_adobe_express.png);
+  background-size: 100%;
+  position: absolute;
+  margin-top: 400px;
+  animation: animasiroket 0.4s infinite;
+}
+#rocket.freeze {
+  width: 100px;
+  height: 100px;
+  background-image: url(IMG_20231005_212200_adobe_express.png);
+  background-size: 100%;
+  position: absolute;
+  margin-top: 400px;
+  animation: none;
+}
+#meteor {
+  width: 100px;
+  height: 100px;
+  background-image: url(IMG_20231005_212216_adobe_express.png);
+  background-size: 100%;
+}
+#planet {
+  width: 100px;
+  height: 100px;
+  background-image: url(IMG_20231005_212229_adobe_express.png);
+  background-size: 100%;
+  margin-left: 175px;
+}
+#astronaut {
+  width: 100px;
+  height: 100px;
+  background-image: url(IMG_20231005_212247_adobe_express.png);
+  background-size: 100%;
+  margin-left: 350px;
+}
