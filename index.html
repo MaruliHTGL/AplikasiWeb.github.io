@@ -5,94 +5,179 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body style="background-color: #131212">
-    <h1 style="color: aliceblue" align="center">Survival Rocket</h1>
-    <h3 style="color: aliceblue" align="center">Score : <span id="score">0</span></h3>
+    <script src="index.js"></script>
+    <table>
+      <tr>
+        <td>
+          <div class="login-container">
+            <h1 style="color: aliceblue">Login</h1>
+            <!-- Login Form -->
+            <form id="login-form">
+              <label for="email" style="color: aliceblue">Email:</label>
+              <br />
+              <input type="email" id="email" name="email" required />
+              <br />
+              <br />
+              <label for="password" style="color: aliceblue">Password:</label>
+              <br />
+              <input type="password" id="password" name="password" required />
 
-    <div id="main" style="background-position-y: 0">
-      <div id="space">
-        <div id="rocket" style="margin-left: 175px"></div>
-        <div id="meteor" style="margin-top: 600px"></div>
-        <div id="planet" style="margin-top: 600px"></div>
-        <div id="astronaut" style="margin-top: 600px"></div>
-      </div>
-    </div>
-    <script type="text/javascript">
-      var endgame = true;
+              <button type="submit">Login</button>
+            </form>
+          </div>
 
-      function setbackgroundmoving() {
-        if (endgame == true) {
-          setTimeout(function () {
-            var bg = document.getElementById("main");
-            bg.style.backgroundPositionY = parseInt(bg.style.backgroundPositionY.replace("px", "")) + 1 + "px";
+          <div class="register-container">
+            <h1 style="color: aliceblue">Register</h1>
+            <!-- Register Form -->
+            <form id="register-form">
+              <label for="name" style="color: aliceblue">Nama:</label>
+              <br />
+              <input type="text" id="name" name="name" required />
+              <br />
+              <br />
+              <label for="email" style="color: aliceblue">Email:</label>
+              <br />
+              <input type="email" id="email" name="email" required />
+              <br />
+              <br />
+              <label for="password" style="color: aliceblue">Password:</label>
+              <br />
+              <input type="password" id="password" name="password" required />
 
-            document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML) + 1;
+              <button type="submit">Register</button>
+            </form>
+          </div>
+        </td>
+        <td>
+          <h1 style="color: aliceblue" align="center">Survival Rocket</h1>
+          <h3 style="color: aliceblue" align="center">Score : <span id="score">0</span></h3>
 
+          <div id="main" style="background-position-y: 0">
+            <div id="space">
+              <div id="rocket" style="margin-left: 175px"></div>
+              <div id="meteor" style="margin-top: 600px"></div>
+              <div id="planet" style="margin-top: 600px"></div>
+              <div id="astronaut" style="margin-top: 600px"></div>
+            </div>
+          </div>
+          <script type="text/javascript">
+            var endgame = true;
+
+            function setbackgroundmoving() {
+              if (endgame == true) {
+                setTimeout(function () {
+                  var bg = document.getElementById("main");
+                  bg.style.backgroundPositionY = parseInt(bg.style.backgroundPositionY.replace("px", "")) + 1 + "px";
+
+                  document.getElementById("score").innerHTML = parseInt(document.getElementById("score").innerHTML) + 1;
+
+                  setbackgroundmoving();
+                }, 5);
+              }
+            }
             setbackgroundmoving();
-          }, 5);
-        }
-      }
-      setbackgroundmoving();
 
-      function setobstaclemoving() {
-        var meteor = document.getElementById("meteor"),
-          planet = document.getElementById("planet"),
-          astronaut = document.getElementById("astronaut"),
-          rocket = document.getElementById("rocket");
+            function setobstaclemoving() {
+              var meteor = document.getElementById("meteor"),
+                planet = document.getElementById("planet"),
+                astronaut = document.getElementById("astronaut"),
+                rocket = document.getElementById("rocket");
 
-        setTimeout(function () {
-          meteor.style.marginTop = parseInt(meteor.style.marginTop.replace("px", "")) + 1 + "px";
-          planet.style.marginTop = parseInt(planet.style.marginTop.replace("px", "")) + 1 + "px";
-          astronaut.style.marginTop = parseInt(astronaut.style.marginTop.replace("px", "")) + 1 + "px";
+              setTimeout(function () {
+                meteor.style.marginTop = parseInt(meteor.style.marginTop.replace("px", "")) + 1 + "px";
+                planet.style.marginTop = parseInt(planet.style.marginTop.replace("px", "")) + 1 + "px";
+                astronaut.style.marginTop = parseInt(astronaut.style.marginTop.replace("px", "")) + 1 + "px";
 
-          if (parseInt(meteor.style.marginTop.replace("px", "")) > 525) {
-            meteor.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
-            meteor.style.marginTop = "-100px";
-          }
+                if (parseInt(meteor.style.marginTop.replace("px", "")) > 525) {
+                  meteor.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
+                  meteor.style.marginTop = "-100px";
+                }
 
-          if (parseInt(planet.style.marginTop.replace("px", "")) > 525) {
-            planet.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
-            planet.style.marginTop = "-100px";
-          }
+                if (parseInt(planet.style.marginTop.replace("px", "")) > 525) {
+                  planet.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
+                  planet.style.marginTop = "-100px";
+                }
 
-          if (parseInt(astronaut.style.marginTop.replace("px", "")) > 525) {
-            astronaut.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
-            astronaut.style.marginTop = "-100px";
-          }
+                if (parseInt(astronaut.style.marginTop.replace("px", "")) > 525) {
+                  astronaut.style.marginLeft = Math.floor(Math.random() * 250) + 50 + "px";
+                  astronaut.style.marginTop = "-100px";
+                }
 
-          if (meteor.offsetTop + 75 >= rocket.offsetTop && meteor.offsetLeft + 30 >= rocket.offsetLeft && meteor.offsetTop + 75 <= rocket.offsetTop + 100 && meteor.offsetLeft <= rocket.offsetLeft + 30) {
-            alert("Game Over Score: " + document.getElementById("score").innerHTML);
-            endgame = false;
-            rocket.setAttribute("class", "freeze");
-          } else if (planet.offsetTop + 55 >= rocket.offsetTop && planet.offsetLeft + 45 >= rocket.offsetLeft && planet.offsetTop + 55 <= rocket.offsetTop + 100 && planet.offsetLeft <= rocket.offsetLeft + 45) {
-            alert("Game Over Score : " + document.getElementById("score").innerHTML);
-            endgame = false;
-            rocket.setAttribute("class", "freeze");
-          } else if (astronaut.offsetTop + 55 >= rocket.offsetTop && astronaut.offsetLeft + 45 >= rocket.offsetLeft && astronaut.offsetTop + 55 <= rocket.offsetTop + 100 && astronaut.offsetLeft <= rocket.offsetLeft + 45) {
-            alert("Game Over Score: " + document.getElementById("score").innerHTML);
-            endgame = false;
-            rocket.setAttribute("class", "freeze");
-          } else {
+                if (meteor.offsetTop + 75 >= rocket.offsetTop && meteor.offsetLeft + 30 >= rocket.offsetLeft && meteor.offsetTop + 75 <= rocket.offsetTop + 100 && meteor.offsetLeft <= rocket.offsetLeft + 30) {
+                  alert("Game Over Score: " + document.getElementById("score").innerHTML);
+                  endgame = false;
+                  rocket.setAttribute("class", "freeze");
+                } else if (planet.offsetTop + 55 >= rocket.offsetTop && planet.offsetLeft + 45 >= rocket.offsetLeft && planet.offsetTop + 55 <= rocket.offsetTop + 100 && planet.offsetLeft <= rocket.offsetLeft + 45) {
+                  alert("Game Over Score : " + document.getElementById("score").innerHTML);
+                  endgame = false;
+                  rocket.setAttribute("class", "freeze");
+                } else if (astronaut.offsetTop + 55 >= rocket.offsetTop && astronaut.offsetLeft + 45 >= rocket.offsetLeft && astronaut.offsetTop + 55 <= rocket.offsetTop + 100 && astronaut.offsetLeft <= rocket.offsetLeft + 45) {
+                  alert("Game Over Score: " + document.getElementById("score").innerHTML);
+                  endgame = false;
+                  rocket.setAttribute("class", "freeze");
+                } else {
+                  setobstaclemoving();
+                }
+              }, 1);
+            }
             setobstaclemoving();
-          }
-        }, 1);
-      }
-      setobstaclemoving();
 
-      if (endgame == true) {
-        window.addEventListener("keydown", function (e) {
-          var rocket = document.getElementById("rocket");
-          if (e.keyCode == 37) {
-            if (parseInt(rocket.style.marginLeft.replace("px", "")) > 0) {
-              rocket.style.marginLeft = parseInt(rocket.style.marginLeft.replace("px", "")) - 10 + "px";
+            if (endgame == true) {
+              window.addEventListener("keydown", function (e) {
+                var rocket = document.getElementById("rocket");
+                if (e.keyCode == 37) {
+                  if (parseInt(rocket.style.marginLeft.replace("px", "")) > 0) {
+                    rocket.style.marginLeft = parseInt(rocket.style.marginLeft.replace("px", "")) - 10 + "px";
+                  }
+                }
+                if (e.keyCode == 39) {
+                  if (parseInt(rocket.style.marginLeft.replace("px", "")) < 300) {
+                    rocket.style.marginLeft = parseInt(rocket.style.marginLeft.replace("px", "")) + 10 + "px";
+                  }
+                }
+              });
             }
-          }
-          if (e.keyCode == 39) {
-            if (parseInt(rocket.style.marginLeft.replace("px", "")) < 300) {
-              rocket.style.marginLeft = parseInt(rocket.style.marginLeft.replace("px", "")) + 10 + "px";
-            }
-          }
-        });
-      }
-    </script>
+          </script>
+        </td>
+        <td>
+          <script>
+            fetch("https://ets-pemrograman-web-f.cyclic.app/scores/score", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+              },
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (scoresTable.style.display === "none") {
+                  displayHighScores(data.data);
+                  showTable();
+                  console.log(data);
+                } else {
+                  hideTable();
+                }
+              });
+
+            var HighScores = {
+              scores: [],
+            };
+            HighScores.addScore = function (name, score) {
+              var entry = { name: name, score: score };
+              this.scores.push(entry);
+              this.scores.sort(function (a, b) {
+                return b.score - a.score;
+              });
+            };
+            HighScores.displayScores = function () {
+              console.log("High Scores:");
+              for (var i = 0; i < this.scores.length; i++) {
+                console.log(i + 1 + ". " + localStorage.getItem("nama") + ": " + this.scores[i].score);
+              }
+            };
+          </script>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
